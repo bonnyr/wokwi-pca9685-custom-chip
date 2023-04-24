@@ -27,7 +27,7 @@ bool gen_debug;
 #define MIN_ADDR 1
 #define MAX_ADDR 62
 #define MAX_ADDR_PINS 6
-#define ADDR_MASK 0x3F;
+#define ADDR_MASK 0x3F
 #define MAX_PIN_NAME_LEN 8
 #define I2C_BUFFER_LEN 128
 
