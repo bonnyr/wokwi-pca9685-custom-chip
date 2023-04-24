@@ -27,6 +27,7 @@ bool gen_debug;
 #define MIN_ADDR 1
 #define MAX_ADDR 62
 #define MAX_ADDR_PINS 6
+#define ADDR_MASK 0x3F;
 #define MAX_PIN_NAME_LEN 8
 #define I2C_BUFFER_LEN 128
 
@@ -269,7 +270,7 @@ bool on_i2c_connect(void *data, uint32_t address, bool read)
   memset(chip->i2c_buffer, 0, I2C_BUFFER_LEN);
 
   // check for reset first - proceeded by General Call Address (0x00)
-  if (address == ADDR_GEN_CALL || address == chip->addr)
+  if (address == ADDR_GEN_CALL || ((address & ADDR_MASK) == chip->addr))
   {
     chip->i2c_gen_call = address == ADDR_GEN_CALL;
     chip->i2c_type = read;
